@@ -40,11 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'web' => [
+        'web_company' => [
             'driver' => 'session',
             'provider' => 'companies',
         ],
-        'web' => [
+        'web_employee' => [
             'driver' => 'session',
             'provider' => 'employees',
         ],
