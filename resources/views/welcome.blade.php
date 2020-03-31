@@ -83,6 +83,9 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <div>
+                    <img src="{{ asset('storage/images/plan-save.png') }}" />
+                </div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>

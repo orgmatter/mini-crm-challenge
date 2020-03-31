@@ -1,6 +1,9 @@
 <?php
-
+// namespace Database\seeds;
 use Illuminate\Database\Seeder;
+// use database\RoleSeeder;
+// use database\PrivilegeSeeder;
+// use database\CompanySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call([
+            RoleSeeder::class,
+            PrivilegeSeeder::class,
+            CompanySeeder::class
+        ]);
     }
 }
