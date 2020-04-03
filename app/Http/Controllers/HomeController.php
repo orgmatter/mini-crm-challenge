@@ -12,7 +12,15 @@ class HomeController extends Controller
      * @return void
      */
 
+    protected function guard() 
+    {
+        return Auth::guard('admin');
+    }
 
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     
 
     /**
@@ -23,9 +31,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        if (Auth::check()) {
+        if (Auth::guard('admin')->check()) {
             
-            return redirect()->to('/dashboard');
+            return redirect()->to('/dashboard/admin');
 
         }else {
 

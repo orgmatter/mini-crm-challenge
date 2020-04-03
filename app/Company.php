@@ -11,13 +11,15 @@ class Company extends Authenticatable
 {
     use Notifiable;
 
+    protected $guard = 'company';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'logo', 'url'
+        'role_id', 'name', 'email', 'password', 'fake_password', 'logo', 'url'
     ];
 
     /**
@@ -31,5 +33,9 @@ class Company extends Authenticatable
 
     public function employees() {
         return $this->hasMany('App\Employee');
+    }
+
+    public function user() {
+        return $this->belongsTo('App\User');
     }
 }

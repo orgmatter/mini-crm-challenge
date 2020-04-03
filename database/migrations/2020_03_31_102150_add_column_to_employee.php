@@ -14,7 +14,7 @@ class AddColumnToEmployee extends Migration
     public function up()
     {
         Schema::table('employees', function (Blueprint $table) {
-            $table->foreignId('role_id')->after('company_id');
+            $table->foreignId('role_id')->after('company_id')->change();
         });
     }
 
