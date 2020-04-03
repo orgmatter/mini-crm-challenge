@@ -93,7 +93,9 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/ogadimmaosuji/mini-crm/resources/js/views/dashboard.js'");
+// display the create user alert modal after a user is created
+$('#create_user_alert_modal_center').modal('show');
+$('#create_employee_alert_modal_center').modal('show');
 
 /***/ }),
 

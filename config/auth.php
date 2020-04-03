@@ -40,11 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'web_company' => [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'company' => [
             'driver' => 'session',
             'provider' => 'companies',
         ],
-        'web_employee' => [
+        'employee' => [
             'driver' => 'session',
             'provider' => 'employees',
         ],
@@ -115,7 +119,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'comapnies' => [
+        'admins' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'companies' => [
             'provider' => 'companies',
             'table' => 'password_resets',
             'expire' => 60,

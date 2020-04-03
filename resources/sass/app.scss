@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Devices
+@import './devices/lg-desktop';
+@import './devices/sm-desktop';
+@import './devices/sm-desktop';
+@import './devices/tablet';
+@import './devices/workstation';
