@@ -7,8 +7,11 @@
             <div class="card">
                 <div class="card-header">Admin {{ __('Login') }}</div>
 
+                @if(session('create_alert_message'))
+                    @crmCreateAlertModal(['create_alert_message' => session('create_alert_message')])
+                @endif
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('dashboard.login') }}">
                         @csrf
 
                         <div class="form-group row">

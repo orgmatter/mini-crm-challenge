@@ -3,6 +3,36 @@
 and (min-width : 1024px) 
 and (max-width : 1839px) {
 
+    #company_table_modal_center {
+
+        .modal-dialog-centered {
+            // border: 3px solid red;
+            max-width: 900px;
+
+            .modal-body-container {
+
+                .modal-body-cover {
+
+                }
+            }
+        }
+    }
+
+    #user_table_modal_center {
+
+        .modal-dialog-centered {
+            // border: 3px solid red;
+            max-width: 700px;
+
+            .modal-body-container {
+
+                .modal-body-cover {
+
+                }
+            }
+        }
+    }
+
     .dashboard-tab-container {
 
         .dashboard-tab-cover {
@@ -50,6 +80,54 @@ and (max-width : 1839px) {
                         }
                     }
                     .content-cover-create-item-divider {
+                        width: 0px;
+                        border-left: 1px solid lightgrey;
+                    }
+                }
+            }
+
+
+
+
+            #tablink-content-cover-views {
+        
+                .content-cover-view-flex {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 20px;
+        
+                    .content-cover-view-item {
+                        width: 48%;
+                        height: 300px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        // border: 1px solid red;
+        
+                        .view-btn-cover {
+                            // height: 100px;
+                            // border: 1px solid red;
+                            border-radius: 50px;
+                            background-color: rgb(235,235,235);
+                            // box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+
+                            &:hover {
+                                background-color: rgb(230,230,230);
+                            }
+        
+                            .view-btn {
+                                font-size: 1rem;
+                                // color: rgba(0,0,0,0.7);
+                                color: #3490dc;
+
+                                &:hover {
+                                    color: #1d68a7;
+                                }
+                            }
+                        }
+                    }
+                    .content-cover-view-item-divider {
                         width: 0px;
                         border-left: 1px solid lightgrey;
                     }

@@ -9,22 +9,25 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\UserFormRequest;
 use App\Http\Requests\Admin\CompanyFormRequest;
+use App\Http\Requests\Admin\DeleteCompanyFormRequest;
+use App\Http\Requests\Admin\AdminLoginFormRequest;
 use App\Role;
 use App\Privilege;
 use App\User;
+use App\Company;
 
 class AdminController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('guest');
     }
 
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
+    // protected function guard()
+    // {
+    //     return Auth::guard('auth');
+    // }
 
     // set the authenticated user
     protected function setUser() {
@@ -56,7 +59,7 @@ class AdminController extends Controller
     {
 
         if(Auth::guard('admin')->check()) {
-            $user_role_id = Auth::user()->role_id;
+            $user_role_id = Auth::guard('admin')->user()->role_id;
 
             $role = Role::find($user_role_id);
 
@@ -66,12 +69,64 @@ class AdminController extends Controller
 
             $privileges = Privilege::where('role_id', $user_role_id)->get();
 
-            return view('dashboard.admin', compact(['roles','role_name','privileges']));
+            $users = User::where('id', '<>', $this->setUser()->id)->get();
+
+            $companies = $this->setUser()->companies;
+
+            return view('dashboard.admin', compact(['roles','role_name','privileges', 'users', 'companies']));
         }else {
 
             return redirect()->to('/login');
-            // return 'Hello world';
         }
+    }
+
+    public function login(AdminLoginFormRequest $request) {
+
+        $validated = $request->validated();
+
+        if (Auth::guard('admin')->attempt($request->only(['email', 'password']))) {
+
+            return redirect(route('dashboard.index'));
+        }else {
+
+            return redirect()->back()->with('create_alert_message','Oops! Seems like login credentials is incorrect!');
+        }
+    }
+
+
+    public function delete_company(DeleteCompanyFormRequest $request, Company $company) {
+
+        $validated = $request->validated();
+
+        $company_result = Company::find($company);
+
+        if($company_result->destroy()) {
+
+            return redirect(route('dashboard.index'));
+        }else {
+
+            return redirect()->back()->with('create_alert_message','Oops! Seems like something went wrong, try again!'); 
+        }
+    }
+
+    public function delete_user(Request $request, User $user) {
+
+        $user_result = User::find($user);
+
+        if($user_result->destroy()) {
+
+            return redirect(route('dashboard.index'));
+        }else {
+
+            return redirect()->back()->with('create_alert_message','Oops! Seems like something went wrong, try again!'); 
+        }
+    }
+
+    public function logout () {
+
+        Auth::guard('admin')->logout();
+
+        return redirect(route('login'));
     }
 
     public function create_user(UserFormRequest $request) {
@@ -90,12 +145,12 @@ class AdminController extends Controller
                 'fake_password' => $password
             ]);
             if(isset($user)) {
-                return redirect('dashboard.admin')->with('create_user_alert_message','Great! You have created a new user!!');
+                return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new user!!');
             }else {
-                return redirect('dashboard.admin')->with('create_user_alert_message','Oops! Something went wrong, try again.');;
+                return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');
             }
         }else {
-            return redirect('dashboard.admin')->with('create_user_alert_message', 'You are not allowed to perform this action!');
+            return redirect('dashboard.admin')->with('create_alert_message', 'You are not allowed to perform this action!');
 
         }
     }

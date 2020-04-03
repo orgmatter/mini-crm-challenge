@@ -9,7 +9,7 @@
 
 
                 @if(session('create_alert_message'))
-                    @crmCreateAlertModal(['create_alert_message' => session('create_alert_message')])
+                    @companyCreateAlertModal(['create_alert_message' => session('create_alert_message')])
                 @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('company.login') }}">

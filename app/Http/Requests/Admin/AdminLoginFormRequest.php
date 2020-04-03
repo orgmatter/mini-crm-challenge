@@ -3,10 +3,8 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Str;
-use App\Company;
 
-class CompanyFormRequest extends FormRequest
+class AdminLoginFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,8 +13,7 @@ class CompanyFormRequest extends FormRequest
      */
     public function authorize()
     {
-        // an authorized user who is an Admin can create a company
-        return $this->user()->can('create-company', Company::class);
+        return true;
     }
 
     /**
@@ -27,12 +24,8 @@ class CompanyFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'role' => 'required|numeric',
-            'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'url' => 'required'
         ];
     }
 }
