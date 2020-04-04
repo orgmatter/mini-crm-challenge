@@ -73,8 +73,8 @@ class AdminController extends Controller
 
             $companies = $this->setUser()->companies;
 
-            // return view('dashboard.admin', compact(['roles','role_name','privileges', 'users', 'companies']));
-            return response()->json($companies);
+            return view('dashboard.admin', compact(['roles','role_name','privileges', 'users', 'companies']));
+            // return response()->json($companies);
         }else {
 
             return redirect()->to('/login');
@@ -152,7 +152,8 @@ class AdminController extends Controller
                 return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');
             }
         }else {
-            return redirect('dashboard.admin')->with('create_alert_message', 'You are not allowed to perform this action!');
+            // return redirect('dashboard.admin')->with('create_alert_message', 'You are not allowed to perform this action!');
+            return response()-json($user);
 
         }
     }
@@ -187,7 +188,8 @@ class AdminController extends Controller
                     // return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new company!!');
                     return response()->json($company);
                 }else {
-                    return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');;
+                    // return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');;
+                    return response()->json($company);
                 }
             }
 
