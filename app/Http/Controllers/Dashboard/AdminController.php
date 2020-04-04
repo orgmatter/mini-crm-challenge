@@ -74,6 +74,7 @@ class AdminController extends Controller
             $companies = $this->setUser()->companies;
 
             return view('dashboard.admin', compact(['roles','role_name','privileges', 'users', 'companies']));
+            // return response()->json($companies);
         }else {
 
             return redirect()->to('/login');
@@ -145,12 +146,14 @@ class AdminController extends Controller
                 'fake_password' => $password
             ]);
             if(isset($user)) {
-                return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new user!!');
+                return redirect(route('dashboard.index'))->with('create_alert_message','Great! You have created a new user!!');
+                // return response()-json($user);
             }else {
-                return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');
+                return redirect()->back()->with('create_alert_message','Oops! Something went wrong, try again.');
+                // return response()-json($user);
             }
         }else {
-            return redirect('dashboard.admin')->with('create_alert_message', 'You are not allowed to perform this action!');
+            return redirect(rouet('dashboard.index'))->with('create_alert_message', 'You are not allowed to perform this action!');
 
         }
     }
@@ -182,14 +185,16 @@ class AdminController extends Controller
                 ]);
 
                 if(isset($company)) {
-                    return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new company!!');
+                    return redirect(route('dashboard.index'))->with('create_alert_message','Great! You have created a new company!!');
+                    // return response()->json($company);
                 }else {
-                    return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');;
+                    return redirect()->back()->with('create_alert_message','Oops! Something went wrong, try again.');;
+                    // return response()->json($company);
                 }
             }
 
         }else {
-            return redirect('dashboard.admin')->with('create_alert_message', 'You are not allowed to perform this action!');
+            return redirect(route('dashboard.index'))->with('create_alert_message', 'You are not allowed to perform this action!');
 
         }
     }
