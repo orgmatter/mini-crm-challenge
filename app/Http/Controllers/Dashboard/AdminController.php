@@ -146,7 +146,8 @@ class AdminController extends Controller
                 'fake_password' => $password
             ]);
             if(isset($user)) {
-                return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new user!!');
+                // return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new user!!');
+                return response()-json($user);
             }else {
                 return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');
             }
@@ -183,7 +184,8 @@ class AdminController extends Controller
                 ]);
 
                 if(isset($company)) {
-                    return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new company!!');
+                    // return redirect('dashboard.admin')->with('create_alert_message','Great! You have created a new company!!');
+                    return response()->json($company);
                 }else {
                     return redirect('dashboard.admin')->with('create_alert_message','Oops! Something went wrong, try again.');;
                 }

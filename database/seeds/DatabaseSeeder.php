@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PrivilegeSeeder::class,
             CompanySeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            UpdateCompanySeeder::class
         ]);
     }
 }
