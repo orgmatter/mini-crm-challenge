@@ -73,7 +73,8 @@ class AdminController extends Controller
 
             $companies = $this->setUser()->companies;
 
-            return view('dashboard.admin', compact(['roles','role_name','privileges', 'users', 'companies']));
+            // return view('dashboard.admin', compact(['roles','role_name','privileges', 'users', 'companies']));
+            return response()->json($companies);
         }else {
 
             return redirect()->to('/login');
