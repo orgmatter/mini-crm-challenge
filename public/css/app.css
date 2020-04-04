@@ -10891,6 +10891,14 @@ a.text-dark:focus {
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1839px) and (min-width: 1024px) and (max-width: 1839px) and (min-width: 1024px) and (max-width: 1839px) {
+  #company_table_modal_center .modal-dialog-centered {
+    max-width: 900px;
+  }
+
+  #user_table_modal_center .modal-dialog-centered {
+    max-width: 700px;
+  }
+
   .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-create .content-cover-create-flex {
     width: 100%;
     display: flex;
@@ -10925,6 +10933,44 @@ a.text-dark:focus {
   }
 
   .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-create .content-cover-create-flex .content-cover-create-item-divider {
+    width: 0px;
+    border-left: 1px solid lightgrey;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex .content-cover-view-item {
+    width: 48%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex .content-cover-view-item .view-btn-cover {
+    border-radius: 50px;
+    background-color: #ebebeb;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex .content-cover-view-item .view-btn-cover:hover {
+    background-color: #e6e6e6;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex .content-cover-view-item .view-btn-cover .view-btn {
+    font-size: 1rem;
+    color: #3490dc;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex .content-cover-view-item .view-btn-cover .view-btn:hover {
+    color: #1d68a7;
+  }
+
+  .dashboard-tab-container .dashboard-tab-cover #tablink-content-cover-views .content-cover-view-flex .content-cover-view-item-divider {
     width: 0px;
     border-left: 1px solid lightgrey;
   }

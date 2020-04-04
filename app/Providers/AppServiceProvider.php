@@ -26,7 +26,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::include('includes.modals.forms.crm.user_form', 'userFormModal');
         Blade::include('includes.modals.forms.crm.company_form', 'companyFormModal');
+
+        Blade::include('includes.modals.forms.crm.user_table', 'userTableModal');
+        Blade::include('includes.modals.forms.crm.company_table', 'companyTableModal');
+
         Blade::include('includes.modals.forms.company.employee_form', 'employeeFormModal');
+        Blade::include('includes.modals.forms.company.employee_form', 'employeeTableModal');
+
         Blade::include('includes.modals.alerts.crm.create_alert', 'crmCreateAlertModal');
         Blade::include('includes.modals.alerts.company.create_alert', 'companyCreateAlertModal');
     }

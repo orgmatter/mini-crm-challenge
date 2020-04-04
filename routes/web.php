@@ -22,13 +22,14 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function() {
 
     Route::get('', 'AdminController@index')->name('dashboard.index');
+    Route::post('login', 'AdminController@login')->name('dashboard.login');
     Route::post('user', 'AdminController@create_user')->name('dashboard.create.user');
     Route::get('user', 'AdminController@show_users')->name('dashboard.show.users');
     Route::put('update/{user}', 'AdminController@update_users')->name('dashboard.update.user');
-    Route::delete('user', 'AdminController@delete_user')->name('dashboard.delete.user');
+    Route::delete('user/{user}', 'AdminController@delete_user')->name('dashboard.delete.user');
     Route::post('company', 'AdminController@create_company')->name('dashboard.create.company');
     Route::get('company', 'AdminController@show_companies')->name('dashboard.show.companies');
     Route::delete('company/{company}', 'AdminController@delete_company')->name('dashboard.delete.company');
