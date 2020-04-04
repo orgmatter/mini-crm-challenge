@@ -14,7 +14,7 @@ class AddColumnV1ToUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('fake_password', 255)->after('password')->change();
+            $table->string('fake_password', 255)->after('password');
         });
     }
 
